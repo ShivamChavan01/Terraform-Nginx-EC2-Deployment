@@ -192,6 +192,3 @@ sudo systemctl status nginx
 ## Conclusion
 This Terraform configuration automates the deployment of an AWS EC2 instance with Nginx using LocalStack (for supported resources). If you want real EC2 functionality, you must deploy it on actual AWS.
 
----
-**Author: Shivam Chavan**
-
