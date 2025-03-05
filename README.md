@@ -1,4 +1,7 @@
-# Terraform Nginx EC2 Deployment
+
+# 🚀 Terraform AWS VPC & EC2 Setup with Nginx  
+
+
 
 ## Overview
 This Terraform configuration sets up an AWS environment using LocalStack and deploys an EC2 instance running Nginx. The setup includes:
@@ -7,6 +10,17 @@ This Terraform configuration sets up an AWS environment using LocalStack and dep
 - **Security Group** to allow HTTP traffic.
 - **EC2 Instance** with user data to install and start Nginx.
 - **Terraform Outputs** for instance public IP and Nginx access URL.
+
+
+  ## 🛠️ Features  
+✅ **Automated AWS Infrastructure** – Deploys a VPC, subnets, and EC2 instance using Terraform.  
+
+✅ **Nginx Installation** – Installs and starts Nginx automatically.  
+
+✅ **Security Group Rules** – Allows HTTP (port 80) access.  
+
+✅ **LocalStack Integration** – Simulates AWS services locally.  
+
 
 ## Prerequisites
 - Terraform installed ([Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli))
@@ -191,7 +205,4 @@ sudo systemctl status nginx
 
 ## Conclusion
 This Terraform configuration automates the deployment of an AWS EC2 instance with Nginx using LocalStack (for supported resources). If you want real EC2 functionality, you must deploy it on actual AWS.
-
----
-**Author: Shivam Chavan**
 
