@@ -28,10 +28,11 @@ pipeline {
 
 
         stage('Clone Repository') {
-            steps {
-                git 'https://github.com/ShivamChavan01/Terraform-Nginx-EC2-Deployment'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/ShivamChavan01/Terraform-Nginx-EC2-Deployment'
+    }
+}
+
 
         stage('Terraform Init') {
             steps {
