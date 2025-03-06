@@ -55,7 +55,7 @@ pipeline {
         stage('Verify Nginx') {
             steps {
                 script {
-                    def instance_ip = sh(script: "terraform output public_ip", returnStdout: true).trim()
+                    def instance_ip = bat(script: "terraform output public_ip", returnStdout: true).trim()
                     bat "curl -I http://${instance_ip}"
                 }
             }
