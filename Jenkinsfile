@@ -36,19 +36,19 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                bat 'terraform init'
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan'
+                bat 'terraform plan'
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve'
+                bat 'terraform apply -auto-approve'
             }
         }
 
@@ -56,7 +56,7 @@ pipeline {
             steps {
                 script {
                     def instance_ip = sh(script: "terraform output public_ip", returnStdout: true).trim()
-                    sh "curl -I http://${instance_ip}"
+                    bat "curl -I http://${instance_ip}"
                 }
             }
         }
