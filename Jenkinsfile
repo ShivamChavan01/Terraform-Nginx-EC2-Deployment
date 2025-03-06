@@ -9,10 +9,14 @@ pipeline {
     }
 
     stages {
-        stage('Start LocalStack') {
+       stage('Start LocalStack') {
     steps {
         script {
-            def localstack_running = bat(script: "docker ps | findstr localstack || true", returnStdout: true).trim()
+            def docker_running = bat(script: "docker info", returnStatus: true) == 0
+            if (!docker_running) {
+                error "Docker is not running. Please start Docker and try again."
+            }
+            def localstack_running = bat(script: "docker ps | findstr localstack", returnStdout: true).trim()
             if (!localstack_running) {
                 bat 'docker run -d --name localstack -p 4566:4566 localstack/localstack'
                 bat 'timeout /t 5'  // Give it time to start
@@ -20,6 +24,7 @@ pipeline {
         }
     }
 }
+
 
 
         stage('Clone Repository') {
