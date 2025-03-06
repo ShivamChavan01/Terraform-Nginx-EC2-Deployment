@@ -10,16 +10,17 @@ pipeline {
 
     stages {
         stage('Start LocalStack') {
-            steps {
-                script {
-                    def localstack_running = sh(script: "docker ps | grep localstack || true", returnStdout: true).trim()
-                    if (!localstack_running) {
-                        sh 'docker run -d --name localstack -p 4566:4566 localstack/localstack'
-                        sh 'sleep 5'  // Give it time to start
-                    }
-                }
+    steps {
+        script {
+            def localstack_running = bat(script: "docker ps | findstr localstack || true", returnStdout: true).trim()
+            if (!localstack_running) {
+                bat 'docker run -d --name localstack -p 4566:4566 localstack/localstack'
+                bat 'timeout /t 5'  // Give it time to start
             }
         }
+    }
+}
+
 
         stage('Clone Repository') {
             steps {
